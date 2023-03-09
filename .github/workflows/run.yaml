@@ -8,6 +8,8 @@ on:
 jobs:
   Run:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: dtolnay/rust-toolchain@stable
       - uses: actions/checkout@v3
@@ -17,3 +19,7 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: cargo run --release
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore: auto update last title"
+          file_pattern: "last_title.txt"
