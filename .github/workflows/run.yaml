@@ -3,6 +3,7 @@ on:
   schedule:
     # At minute 30 past every 6th hour.
     - cron: "30 */6 * * *"
+  workflow_dispatch:
 
 jobs:
   Run:
